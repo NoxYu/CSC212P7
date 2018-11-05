@@ -28,7 +28,7 @@ public class InsertionSort {
 	
 	/*
 	 * binary search for where to insert the element
-	 * assumes input is a sorted list in ascending order  
+	 * assumes input is a sorted list in ascending order from lowIndex to highIndex
 	 */
 	public static int binarySearch(List<Integer> input, int lowIndex, int highIndex, int targetIndex) {
 		int midIndex;
@@ -86,9 +86,7 @@ public class InsertionSort {
 	public static void insertionSortBinary(List<Integer> input) {
 		int size = input.size();
 		for(int i=1;i<size;i++) {
-			System.out.println("at i("+i+"): "+input.get(i)+"\n\t locus: "+binarySearch(input,0,i-1,i));
 			insert(input, i, binarySearch(input, 0, i-1,i));
-			print(input);
 		}
 	}
 	
