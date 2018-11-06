@@ -1,6 +1,12 @@
 package edu.smith.cs.csc212.p7;
 import java.util.*;
 
+
+/*
+ * cited source for BinarySearch():
+ * https://www.geeksforgeeks.org/binary-insertion-sort/
+ */
+
 public class InsertionSort {
 
 	

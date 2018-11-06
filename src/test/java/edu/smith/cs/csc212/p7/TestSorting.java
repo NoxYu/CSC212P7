@@ -133,4 +133,35 @@ public class TestSorting {
 		Assert.assertTrue(checkSorted(sortMe)); 
 	}
 
+	@Test
+	public void testMergeSortIterative() {
+		// See if the data can be reversed:
+		ArrayList<Integer> sortMe = new ArrayList<>();
+		for (int y : data) {
+			sortMe.add(y);
+		}
+		MergeSort.mergeSortIterative(sortMe);	
+				
+		Assert.assertTrue(checkSorted(sortMe));
+		// For good measure, let's shuffle it and sort it again to see if that works, too.
+		Collections.shuffle(sortMe);
+		MergeSort.mergeSortIterative(sortMe);		
+		Assert.assertTrue(checkSorted(sortMe)); 
+	}
+
+	@Test
+	public void testMergeSortRecursive() {
+		// See if the data can be reversed:
+		ArrayList<Integer> sortMe = new ArrayList<>();
+		for (int y : data) {
+			sortMe.add(y);
+		}
+		MergeSort.mergeSortRecursive(sortMe,0,sortMe.size()-1);			
+		Assert.assertTrue(checkSorted(sortMe));
+		// For good measure, let's shuffle it and sort it again to see if that works, too.
+		Collections.shuffle(sortMe);
+		MergeSort.mergeSortRecursive(sortMe,0,sortMe.size()-1);		
+		Assert.assertTrue(checkSorted(sortMe)); 
+	}
+
 }
