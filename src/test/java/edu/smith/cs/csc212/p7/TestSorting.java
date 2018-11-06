@@ -1,12 +1,7 @@
 package edu.smith.cs.csc212.p7;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.*;
+import org.junit.*;
 
 public class TestSorting {
 	/**
@@ -16,13 +11,29 @@ public class TestSorting {
 	 */
 	private static boolean checkSorted(List<Integer> items) {
 		for (int i=0; i<items.size()-1; i++) {
-			if (items.get(i) >= items.get(i+1)) {
+			if (items.get(i) > items.get(i+1)) {
 				System.err.println("items out of order: "+items.get(i)+", "+items.get(i+1) + " at index="+i);
 				return false;
 			}
 		}
 		return true;
 	}
+
+	/*
+	 * overload the method above
+	 * used for testing merge sort on DoublyLinkedLists 
+	 */
+	private static boolean checkSorted(DoublyLinkedList<Integer> items) {
+		for(int i=0;i<items.size()-1;i++) {
+			if(items.getIndex(i)>items.getIndex(i+1)) {
+				System.err.println("items out of order: "+items.getIndex(i)+", "+items.getIndex(i+1) + " at index="+i);
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
 	
 	/**
 	 * Here's some data!
@@ -148,7 +159,7 @@ public class TestSorting {
 		MergeSort.mergeSortIterative(sortMe);		
 		Assert.assertTrue(checkSorted(sortMe)); 
 	}
-
+ 
 	@Test
 	public void testMergeSortRecursive() {
 		// See if the data can be reversed:
@@ -164,4 +175,31 @@ public class TestSorting {
 		Assert.assertTrue(checkSorted(sortMe)); 
 	}
 
+	/*
+	 * generate a DoublyLinkedList of Integers of random order
+	 */
+	public DoublyLinkedList<Integer> makeFullDDL(){
+		Random rand = new Random();
+		DoublyLinkedList<Integer> data = new DoublyLinkedList<Integer>();
+		for(int i=9;i>=0;i--) {
+			data.addBack(rand.nextInt(20));
+		}		
+		return data;
+	}
+	/*
+	 * helper method for debugging 
+	 */
+	public static void print(DoublyLinkedList<Integer> input) {
+		for(int i=0;i<input.size();i++) {
+			System.out.print(input.getIndex(i)+"-");
+		}
+	}
+	
+	
+	@Test
+	public void testMergeSortIterativeDDL() {
+		DoublyLinkedList<Integer> sortMe = makeFullDDL();
+		MergeSortDLL.mergeSortIterative(sortMe);	
+		Assert.assertTrue(checkSorted(sortMe));
+	}
 }

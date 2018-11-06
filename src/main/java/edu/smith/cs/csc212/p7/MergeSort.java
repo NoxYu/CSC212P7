@@ -19,7 +19,7 @@ public class MergeSort {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
 		
-		/*
+		/*  
 		 * separate elements in input into left and right
 		 * left has input[low,mid]
 		 * right has input(mid,high]
